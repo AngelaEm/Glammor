@@ -101,6 +101,7 @@ function andraAntal(produktNamn, nyttAntal) {
     if (produktIndex > -1) {
         kundvagn[produktIndex].antal = parseInt(nyttAntal);
         visaKundkorg();
+        uppdateraKundkorg();
     }
 }
 
@@ -109,6 +110,7 @@ function taBortUrKundvagn(produktNamn) {
     if (produktIndex > -1) {
         kundvagn.splice(produktIndex, 1);
         visaKundkorg();
+        uppdateraKundkorg();
     }
 }
 
