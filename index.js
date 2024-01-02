@@ -5,7 +5,7 @@ const produkter = [
     { namn: "Godisbjörnar", pris: 50, beskrivning: "Godisbjörnar som finns i många färger!", bild: "Images/rosabjornar.png" },
     { namn: "Tomtar", pris: 50, beskrivning: "Såklart man vill ha tomtar i öronen till jul.", bild: "Images/tomtar.png" },
     { namn: "Planeter", pris: 50, beskrivning: "Svarta planeter som passar till det mesta.", bild: "Images/planeter.png" },
-    { namn: "Blixtar", pris: 50, beskrivning: "Coola blixtformade örhängen.", bild: "Images/blixtar.png" },
+    { namn: "Blixtar", pris: 50, beskrivning: "Coola blixtformade örhängen. Finns i olika färger.", bild: "Images/blixtar.png" },
     { namn: "Hundtassar", pris: 50, beskrivning: "Söta hundtassar till hundälskaren.", bild: "Images/tassar.png" },
 ];
 

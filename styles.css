@@ -16,6 +16,12 @@ html, body {
     height: 260px;
 }
 
+.aboutus-background{
+    background: linear-gradient(300deg, #49788C, #8470A0, #7FA6D8);
+    animation: gradient-animation 8s ease infinite;
+    height: auto;
+}
+
 .column1{
     display: flex;
     align-items: center;
@@ -39,9 +45,10 @@ html, body {
 
 .glammor-rubrik{
     color:#7FA6D8;
-    text-align: center;
+    text-align: left;
     font-size: 9rem;
     font-family: 'Playball', cursive;
+    margin-left: 20%;
 }
 
 .glammor-text{
