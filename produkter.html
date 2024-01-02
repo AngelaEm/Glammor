@@ -25,6 +25,9 @@
             <li class="nav-item">
             <a class="nav-link" href="produkter.html">Produkter</a>
             </li>
+            <li class="nav-item">
+                <button type="button" class="btn btn-light nav-link" data-bs-toggle="modal" data-bs-target="#kundkorgModal" id="visaKundkorgKnapp2">Kundkorg</button>
+            </li>
         </ul>
         </div>
     </div>
@@ -50,7 +53,7 @@
     <footer class="bg-light text-center mt-5">
         <div class="container p-4">
             <div class="row">
-                <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#kundkorgModal" id="visaKundkorgKnapp">
+                <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#kundkorgModal" id="visaKundkorgKnapp" >
                     Visa Kundkorg
                 </button>
             </div>
@@ -72,7 +75,7 @@
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fortsätt Handla</button>
-        <button type="button" class="btn btn-primary">Gå till Kassan</button>
+        <button type="button" class="btn btn-primary" onclick="buy()">Köp</button>
         <button type="button" class="btn btn-primary" onclick="clearKundkorg()">Töm Kundkorg</button>
         
     </div>

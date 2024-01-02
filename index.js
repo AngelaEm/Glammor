@@ -42,6 +42,8 @@ function uppdateraKundkorg() {
         li.className = 'list-group-item';
         kundkorgLista.appendChild(li);
     });
+
+    localStorage.setItem('kundvagn', JSON.stringify(kundvagn));
 }
 
 let kundvagn = [];
@@ -69,10 +71,22 @@ function visaKundkorg() {
         const totalPris = item.produkt.pris * item.antal;
         totalSumma += totalPris;
         const vara = `
-            <div>
-                <p>Namn: ${item.produkt.namn}</p>
-                <p>Antal: ${item.antal}<p>
-                <p>Pris: ${item.produkt.pris} kr</p>
+            <div class="row mb-2 align-items-center">   
+                <div class="col-2">
+                    <img src="${item.produkt.bild}" alt="${item.produkt.namn}" class="img-fluid">
+                </div>
+                <div class="col-3">
+                    <span>${item.produkt.namn}</span>
+                </div>
+                <div class="col-2">
+                    <input type="number" class="form-control" value="${item.antal}" min="1" onchange="andraAntal('${item.produkt.namn}', this.value)">
+                </div>
+                <div class="col-3">
+                    <span>Pris: ${item.produkt.pris} kr/st</span>
+                </div>
+                <div class="col-2">
+                    <button class="btn btn-danger" onclick="taBortUrKundvagn('${item.produkt.namn}')">Ta bort</button>
+                </div>
             </div>
         `;
         container.innerHTML += vara;
@@ -81,10 +95,46 @@ function visaKundkorg() {
     container.innerHTML += `<p>Totalsumma: ${totalSumma} kr</p>`;
 }
 
+
+function andraAntal(produktNamn, nyttAntal) {
+    const produktIndex = kundvagn.findIndex(item => item.produkt.namn === produktNamn);
+    if (produktIndex > -1) {
+        kundvagn[produktIndex].antal = parseInt(nyttAntal);
+        visaKundkorg();
+    }
+}
+
+function taBortUrKundvagn(produktNamn) {
+    const produktIndex = kundvagn.findIndex(item => item.produkt.namn === produktNamn);
+    if (produktIndex > -1) {
+        kundvagn.splice(produktIndex, 1);
+        visaKundkorg();
+    }
+}
+
+
+
 document.getElementById('visaKundkorgKnapp').addEventListener('click', visaKundkorg);
+document.getElementById('visaKundkorgKnapp2').addEventListener('click', visaKundkorg);
+
+
 
 function clearKundkorg(){
     kundvagn=[];
     uppdateraKundkorg();
 }
+
+function buy(){
+    alert("Köp genomfört!")
+    kundvagn=[];
+    uppdateraKundkorg();
+}
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    if (localStorage.getItem('kundvagn')) {
+        kundvagn = JSON.parse(localStorage.getItem('kundvagn'));
+        uppdateraKundkorg();
+    }
+});
+
 
