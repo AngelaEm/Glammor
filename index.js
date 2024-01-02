@@ -66,6 +66,7 @@ function laggTillIKundvagn(produktNamn) {
         }  
         uppdateraKundkorg(); 
     }
+
 }
 
 // Funktion för att visa kundkorgen
@@ -107,8 +108,8 @@ function andraAntal(produktNamn, nyttAntal) {
     const produktIndex = kundvagn.findIndex(item => item.produkt.namn === produktNamn);
     if (produktIndex > -1) {
         kundvagn[produktIndex].antal = parseInt(nyttAntal);
-        visaKundkorg();
         uppdateraKundkorg();
+        visaKundkorg();
     }
 }
 
@@ -117,8 +118,8 @@ function taBortUrKundvagn(produktNamn) {
     const produktIndex = kundvagn.findIndex(item => item.produkt.namn === produktNamn);
     if (produktIndex > -1) {
         kundvagn.splice(produktIndex, 1);
-        visaKundkorg();
         uppdateraKundkorg();
+        visaKundkorg();
     }
 }
 
