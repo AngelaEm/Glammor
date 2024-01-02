@@ -60,7 +60,6 @@ function laggTillIKundvagn(produktNamn) {
     }
 }
 
-
 function visaKundkorg() {
     const container = document.getElementById('kundkorgLista');
     container.innerHTML = '';
