@@ -23,7 +23,7 @@ function visaProdukter() {
                     <div class="card-body">
                         <h5 class="card-title">${produkt.namn}</h5>
                         <p class="card-text">${produkt.beskrivning}</p>
-                        <a href="#" onclick="laggTillIKundvagn('${produkt.namn}')" class="btn btn-light">Lägg till</a>
+                        <a href="javascript:void(0);" onclick="laggTillIKundvagn('${produkt.namn}')" class="btn btn-light">Lägg till</a>
                     </div>
                 </div>
             </div>
@@ -44,35 +44,48 @@ function uppdateraKundkorg() {
     });
 }
 
-
 let kundvagn = [];
 
 function laggTillIKundvagn(produktNamn) {
-    const produkt = produkter.find(p => p.namn === produktNamn);
-    if (produkt) {
-        kundvagn.push(produkt);
+    const produktIndex = kundvagn.findIndex(item => item.produkt.namn === produktNamn);
+    if (produktIndex > -1) {
+        kundvagn[produktIndex].antal +=1;
+    }
+    else{
+        const produkt = produkter.find(p => p.namn === produktNamn);
+        if(produkt){
+            kundvagn.push({produkt, antal: 1});
+        }  
         uppdateraKundkorg(); 
     }
 }
 
 
 function visaKundkorg() {
-    const container = document.getElementById('kundkorglista');
+    const container = document.getElementById('kundkorgLista');
     container.innerHTML = '';
+    let totalSumma = 0;
     
-    kundvagn.forEach(produkt => {
+    kundvagn.forEach(item => {
+        const totalPris = item.produkt.pris * item.antal;
+        totalSumma += totalPris;
         const vara = `
             <div>
-                <p>Namn: ${produkt.namn}</p>
-                <p>Antal: 1</p>
-                <p>Pris: ${produkt.pris} kr</p>
+                <p>Namn: ${item.produkt.namn}</p>
+                <p>Antal: ${item.antal}<p>
+                <p>Pris: ${item.produkt.pris} kr</p>
             </div>
         `;
         container.innerHTML += vara;
     });
+
+    container.innerHTML += `<p>Totalsumma: ${totalSumma} kr</p>`;
 }
 
 document.getElementById('visaKundkorgKnapp').addEventListener('click', visaKundkorg);
 
-
+function clearKundkorg(){
+    kundvagn=[];
+    uppdateraKundkorg();
+}
 
