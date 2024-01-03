@@ -66,6 +66,26 @@ html, body {
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 
+@media (max-width: 768px) {
+    .glammor-rubrik {
+        font-size: 4rem;
+        margin-left: 0; 
+        text-align: center;
+    }
+    .column1 {
+        display: flex;
+        justify-content: center; 
+        align-items: center; 
+    }
+
+    #blombild {
+        width: 7rem;
+        height: 7rem;   
+        margin-left: 0;
+    }
+}
+
+
 .card{
     padding: 1rem;
     margin:1rem;

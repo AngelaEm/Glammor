@@ -1,5 +1,5 @@
 
-// Array med produkter
+// Array with products
 const produkter = [
     { namn: "Avokado", pris: 50, beskrivning: "Fina hängen som passar i alla lägen.", bild: "Images/avokado.png" },
     { namn: "Snöflingor", pris: 50, beskrivning: "Snygga snöflingor i vitt och guld.", bild: "Images/snoflinga.png" },
@@ -11,10 +11,10 @@ const produkter = [
     { namn: "Hundtassar", pris: 50, beskrivning: "Söta hundtassar till hundälskaren.", bild: "Images/tassar.png" },
 ];
 
-// Visa produkter
+// Show products
 visaProdukter();
 
-// Funtion för att visa alla produkter som ett kort med namn, beskrivning, pris och en knapp för att lägga till
+// Function to show all products as a card with name, photo, description, price and add-button.
 function visaProdukter() {
     const container = document.getElementById('produkterContainer');
     container.innerHTML = '';
@@ -36,7 +36,7 @@ function visaProdukter() {
     });
 }
 
-// Funktion för att uppdatera kundkorgen
+// Function to update cart
 function uppdateraKundkorg() {
     const kundkorgLista = document.getElementById('kundkorgLista');
     kundkorgLista.innerHTML = '';
@@ -53,7 +53,7 @@ function uppdateraKundkorg() {
 
 let kundvagn = [];
 
-// Funktion för att lägga till i kundkorgen
+// Add to cart function
 function laggTillIKundvagn(produktNamn) {
     const produktIndex = kundvagn.findIndex(item => item.produkt.namn === produktNamn);
     if (produktIndex > -1) {
@@ -69,7 +69,7 @@ function laggTillIKundvagn(produktNamn) {
 
 }
 
-// Funktion för att visa kundkorgen
+// Display cart function
 function visaKundkorg() {
     const container = document.getElementById('kundkorgLista');
     container.innerHTML = '';
@@ -103,7 +103,7 @@ function visaKundkorg() {
     container.innerHTML += `<p>Totalsumma: ${totalSumma} kr</p>`;
 }
 
-// Funktion för när man ändrar antal i kundkorgen
+// Change number of items in cart-function
 function andraAntal(produktNamn, nyttAntal) {
     const produktIndex = kundvagn.findIndex(item => item.produkt.namn === produktNamn);
     if (produktIndex > -1) {
@@ -113,7 +113,7 @@ function andraAntal(produktNamn, nyttAntal) {
     }
 }
 
-// Funktion för när man tar bort ur kundkorgen
+// Delete items from cart-function
 function taBortUrKundvagn(produktNamn) {
     const produktIndex = kundvagn.findIndex(item => item.produkt.namn === produktNamn);
     if (produktIndex > -1) {
@@ -124,25 +124,25 @@ function taBortUrKundvagn(produktNamn) {
 }
 
 
-// Visa kundkorgen från två olika knappar
+// Display cart
 document.getElementById('visaKundkorgKnapp').addEventListener('click', visaKundkorg);
 document.getElementById('visaKundkorgKnapp2').addEventListener('click', visaKundkorg);
 
 
-// Funktion som tömmer kundkorgen
+// Delete cart
 function clearKundkorg(){
     kundvagn=[];
     uppdateraKundkorg();
 }
 
-// Funtion som visar att man köpt och sedan tömmer kundkorgen
+// Message "Köp genomfört"
 function buy(){
     alert("Köp genomfört!")
     kundvagn=[];
     uppdateraKundkorg();
 }
 
-// Hämtar lokalt sparad kundkorg om sidan laddats om
+// Get locally saved cart if you reload the page
 document.addEventListener('DOMContentLoaded', (event) => {
     if (localStorage.getItem('kundvagn')) {
         kundvagn = JSON.parse(localStorage.getItem('kundvagn'));
