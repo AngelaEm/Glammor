@@ -16,19 +16,11 @@ html, body {
     height: 260px;
 }
 
+
 .aboutus-background{
-    background: linear-gradient(300deg, #49788C, #8470A0, #7FA6D8);
+    background: linear-gradient(270deg, #49788C, #8470A0, #7FA6D8);
     animation: gradient-animation 8s ease infinite;
     height: auto;
-}
-
-.column1{
-    display: flex;
-    align-items: center;
-}
-
-.bg-navbar{
-    background-color: #F2E6F3;
 }
 
 @keyframes gradient-animation{
@@ -42,6 +34,16 @@ html, body {
         background-position: 0% 50%;
     }
 }
+
+.column1{
+    display: flex;
+    align-items: center;
+}
+
+.bg-navbar{
+    background-color: #F2E6F3;
+}
+
 
 .glammor-rubrik{
     color:#7FA6D8;
